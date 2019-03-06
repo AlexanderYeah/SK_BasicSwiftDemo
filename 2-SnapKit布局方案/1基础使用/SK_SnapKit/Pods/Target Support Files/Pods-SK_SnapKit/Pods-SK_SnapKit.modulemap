@@ -1,0 +1,6 @@
+module Pods_SK_SnapKit {
+  umbrella header "Pods-SK_SnapKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
