@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         self.collection?.delegate = self as? UICollectionViewDelegate;
         self.collection?.dataSource = self as? UICollectionViewDataSource;
         self.collection?.backgroundColor = UIColor.white;
-        self.collection?.register(CollectCell.classForCoder(), forCellWithReuseIdentifier: "CollectCell");
+        self.collection?.register(UINib(nibName: "CollectCell", bundle: nil), forCellWithReuseIdentifier: "CollectCell");
         self.view.addSubview(self.collection!);
         
         
@@ -84,7 +84,6 @@ class ViewController: UIViewController {
         
         self.collection?.register(CollectionHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header");
         self.collection?.register(CollectionHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footer");
-        
         
     }
 
@@ -107,16 +106,15 @@ extension ViewController:UICollectionViewDataSource{
         
         if photoArr.count > indexPath.row  {
             
-//            let urlStr = photoArr[indexPath.row];
-//            let url:URL! = URL(string: urlStr);
-//            cell.faceImgView.sd_setImage(with: url)
-        
-//            cell.faceImgView.backgroundColor = randomColor();
-            
-//          cell.faceImgView?.kf.setImage(with: ImageResource(downloadURL: url! as URL));
+            let urlStr = photoArr[indexPath.row];
+            print(urlStr);
+            let url:URL! = URL(string: urlStr);
+//          cell.faceImgView.sd_setImage(with: contentUrl)
+//          cell.faceImgView.backgroundColor = randomColor();
+            cell.faceImgView?.kf.setImage(with: ImageResource(downloadURL: url! as URL));
         }
         
-      cell.backgroundColor = randomColor();
+//      cell.backgroundColor = randomColor();
         
         return cell;
     }
@@ -139,9 +137,7 @@ extension ViewController:UICollectionViewDataSource{
     }
     
     // 返回header 高度
-   
-    
-    
+
     func randomColor()->UIColor{
         let red = CGFloat(arc4random()%256)/255.0
         let green = CGFloat(arc4random()%256)/255.0
