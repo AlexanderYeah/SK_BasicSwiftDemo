@@ -1,0 +1,6 @@
+module Pods_SK_ShopCatogory {
+  umbrella header "Pods-SK_ShopCatogory-umbrella.h"
+
+  export *
+  module * { export * }
+}
